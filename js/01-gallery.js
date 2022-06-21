@@ -27,8 +27,13 @@ function openModal(event) {
   const bigImg = event.target.dataset.source;
 
   const instance =
-    basicLightbox.create(`<img src="${bigImg}" width="800" height="600">
-`);
+    basicLightbox.create(`<img src="${bigImg}" width="800" height="600">,
+	 {
+    onShow: (instance) => {
+        instance.element().querySelector('a').onclick = instance.close
+		  
+    }
+	 `);
 
   instance.show();
 }
